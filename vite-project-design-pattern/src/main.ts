@@ -1,24 +1,21 @@
-import './style.css'
-import typescriptLogo from './typescript.svg'
-import viteLogo from '/vite.svg'
-import { setupCounter } from './counter.ts'
+// 1. Implement a Logger class using the Singleton pattern. Logger should have acessible id. // check if after 2 logs id still the same; zr. Singleton.ts
 
-document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
-  <div>
-    <a href="https://vitejs.dev" target="_blank">
-      <img src="${viteLogo}" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://www.typescriptlang.org/" target="_blank">
-      <img src="${typescriptLogo}" class="logo vanilla" alt="TypeScript logo" />
-    </a>
-    <h1>Vite + TypeScript</h1>
-    <div class="card">
-      <button id="counter" type="button"></button>
-    </div>
-    <p class="read-the-docs">
-      Click on the Vite and TypeScript logos to learn more
-    </p>
-  </div>
-`
+import { Logger } from "./Singleton.ts";
+const logger1 = Logger.getInstance();
+logger1.logMessage();
+logger1.logMessage();
 
-setupCounter(document.querySelector<HTMLButtonElement>('#counter')!)
+// 2. Create a GameCharacter factory class. Based on a given text input to the  GameCharacter class it should return a following classes "HUMAN", "ANIMAL", 'WIZZARD'; zr Factory.ts
+
+import { GameCharacterFactory } from "./Factory.ts";
+
+const character1 = GameCharacterFactory.createCharacter("HUMAN");
+console.log(character1.getInfo());
+const character2 = GameCharacterFactory.createCharacter("ANIMAL");
+console.log(character2.getInfo());
+const character3 = GameCharacterFactory.createCharacter("WIZZARD");
+console.log(character3.getInfo());
+
+// 3. Create a SmartHomeFacade class that simplifies the interface for controlling various smart home devices (lights, thermostat, security system) with unified methods like morningRoutine() leaveHome(), and nightMode().
+
+// 4. Create a Tesla builder class. Car should have "wheels", "seatType", "color", "soundSystem". All of those properties should have default values. With TeslaBuilderClass you should be able to modify it's properties.
