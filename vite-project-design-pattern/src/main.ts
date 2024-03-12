@@ -16,6 +16,38 @@ console.log(character2.getInfo());
 const character3 = GameCharacterFactory.createCharacter("WIZZARD");
 console.log(character3.getInfo());
 
-// 3. Create a SmartHomeFacade class that simplifies the interface for controlling various smart home devices (lights, thermostat, security system) with unified methods like morningRoutine() leaveHome(), and nightMode().
+// 3. Create a SmartHomeFacade class that simplifies the interface for controlling various smart home devices (lights, thermostat, security system) with unified methods like morningRoutine() leaveHome(), and nightMode(). zr Facade.ts
 
-// 4. Create a Tesla builder class. Car should have "wheels", "seatType", "color", "soundSystem". All of those properties should have default values. With TeslaBuilderClass you should be able to modify it's properties.
+import {
+  SmartHomeFacade,
+  BasicLight,
+  BasicThermostat,
+  BasicSecuritySystem,
+} from "./Facade.ts";
+
+const basicLight = new BasicLight();
+const basicThermostat = new BasicThermostat();
+const securitySystem = new BasicSecuritySystem();
+
+const smartHome = new SmartHomeFacade(
+  basicLight,
+  basicThermostat,
+  securitySystem
+);
+
+smartHome.morningRoutine();
+smartHome.leaveHome();
+smartHome.nightMode();
+
+// 4. Create a Tesla builder class. Car should have "wheels", "seatType", "color", "soundSystem". All of those properties should have default values. With TeslaBuilderClass you should be able to modify it's properties. zr Builder.ts
+
+import { Tesla, TeslaBuilder } from "./Builder.ts";
+
+const myTesla = new TeslaBuilder()
+  .setWheels(4)
+  .setSeatType("Leather")
+  .setColor("red")
+  .setSoundSystem("Premium")
+  .build();
+
+console.log(myTesla.getInfo());
